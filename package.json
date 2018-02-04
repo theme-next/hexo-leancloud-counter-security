@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/LEAFERx/hexo-leancloud-counter-security#readme",
   "dependencies": {
-    "leancloud-storage": "^3.5.0"
+    "leancloud-storage": "^3.5.0",
+    "readline-sync": "^1.4.7"
   }
 }
