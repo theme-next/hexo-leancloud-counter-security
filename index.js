@@ -2,7 +2,7 @@ var AV = require('leancloud-storage');
 var _ = require('lodash');
 var readlineSync = require('readline-sync');
 
-async function asd() {
+async function sync() {
     var log = this.log;
     var config = this.config;
 
@@ -55,14 +55,13 @@ async function asd() {
     });
 }
 
-hexo.extend.generator.register('hl', asd);
+hexo.extend.generator.register('hl', sync);
 
 command_options = {
     desc: 'asd',
     usage: '<username> <password>'
 };
-
-hexo.extend.console.register('hl', 'hlhl', command_options, function (args) {
+function signUp(args) {
     var log = this.log;
     var config = this.config;
 
@@ -84,4 +83,6 @@ hexo.extend.console.register('hl', 'hlhl', command_options, function (args) {
             (loginedUser) => { log.info(loginedUser.getUsername() + " is successfully signed up"); },
             (error) => { log.error(error); });
     }
-});
+}
+
+hexo.extend.console.register('hl', 'hlhl', command_options, signUp);
