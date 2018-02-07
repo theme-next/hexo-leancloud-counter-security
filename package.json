@@ -1,7 +1,7 @@
 {
   "name": "hexo-leancloud-counter-security",
-  "version": "0.0.1",
-  "description": "",
+  "version": "1.0.0",
+  "description": "hexo-leancloud-counter-security-plugin",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,8 +10,12 @@
     "type": "git",
     "url": "git+https://github.com/LEAFERx/hexo-leancloud-counter-security.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "LEAFERx",
+    "email": "leaferx@outlook.com",
+    "url": "https://leaferx.online/"
+  },
+  "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/LEAFERx/hexo-leancloud-counter-security/issues"
   },
