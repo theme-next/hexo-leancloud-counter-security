@@ -3,8 +3,11 @@
 A plugin to fix a serious security bug in leancloud visitor counter for NexT theme site and other site that integrated this function using a similar way.
 
 A full document to set the counter up and running safely:
+
 [https://leaferx.online/2018/02/11/lc-security/](https://leaferx.online/2018/02/11/lc-security/)(Only Chinese for now)
+
 English document is still under translating.
+
 Recommend to read the doc first.
 
 ## Installation
@@ -34,14 +37,15 @@ leancloud_visitors:
   app_key: <<your app key>
 ```
 You should build the Leancloud background first to make the counter active.
+
 After that, install this plugin and config it to make the counter safe.
 
 ### Console Command
-```bash
+```
 hexo lc-counter register <<username>> <<password>>
 ```
 or
-```bash
+```
 hexo lc-counter r <<username>> <<password>>
 ```
 Register a user in your Leancloud database for authority control.
