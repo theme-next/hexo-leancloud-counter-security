@@ -2,6 +2,22 @@ var AV = require('leancloud-storage');
 var _ = require('lodash');
 var readlineSync = require('readline-sync');
 var packageInfo = require('./package.json');
+var pathFn = require('path');
+var fs = require('fs');
+
+function generate_post_list(locals) {
+    var config = this.config;
+    if (config.leancloud_counter_security.enable_sync) {
+        var urlsPath = 'leancloud_counter_security_urls.json';
+        var urls = [].concat(locals.posts.toArray()).filter((x) => { return x.published }).map((x) => { return { title: x.title, url: '/' + x.path } });
+        return {
+            path: urlsPath,
+            data: JSON.stringify(urls)
+        };
+    }
+}
+
+hexo.extend.generator.register('leancloud_counter_security_generator', generate_post_list);
 
 async function sync() {
     var log = this.log;
@@ -10,7 +26,10 @@ async function sync() {
     if (config.leancloud_counter_security.enable_sync) {
         var APP_ID = config.leancloud_counter_security.app_id;
         var APP_KEY = config.leancloud_counter_security.app_key;
-        var urls = hexo.locals.get('posts').toArray().filter((x) => { return x.published }).map((x) => { return { title: x.title, url: "/" + x.path } });
+        var publicDir = this.public_dir;
+        var UrlsFile = pathFn.join(publicDir, 'leancloud_counter_security_urls.json');
+        var urls = JSON.parse(fs.readFileSync(UrlsFile, 'utf8'));
+
         AV.init({
             appId: APP_ID,
             appKey: APP_KEY
@@ -61,10 +80,10 @@ hexo.extend.deployer.register('leancloud_counter_security_sync', sync);
 var commandOptions = {
     desc: packageInfo.description,
     usage: ' <argument>',
-    "arguments": [
+    'arguments': [
         {
-            "name": 'register | r <username> <password>',
-            "desc": "Register a new user."
+            'name': 'register | r <username> <password>',
+            'desc': 'Register a new user.'
         }
     ]
 };
