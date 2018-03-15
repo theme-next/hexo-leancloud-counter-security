@@ -2,7 +2,7 @@
 [node-image]: https://img.shields.io/node/v/hexo-leancloud-counter-security.svg
 [size-image]: https://img.shields.io/github/size/theme-next/hexo-leancloud-counter-security/index.js.svg
 [mnt-image]: https://img.shields.io/maintenance/yes/2018.svg
-[npm-image]: https://img.shields.io/npm/v/hexo-leancloud-counter-security.svg
+[npm-image]: https://badge.fury.io/js/hexo-leancloud-counter-security.svg
 [dm-image]: https://img.shields.io/npm/dm/hexo-leancloud-counter-security.svg
 [dt-image]: https://img.shields.io/npm/dt/hexo-leancloud-counter-security.svg
 [lic-image]: https://img.shields.io/npm/l/hexo-leancloud-counter-security.svg
