@@ -21,7 +21,7 @@
 
 A plugin to fix a serious security bug in leancloud visitor counter for NexT theme site and other site that integrated this function using a similar way.
 
-Documentation to set the counter up and running safely aviable in [English](https://github.com/theme-next/hexo-theme-next/blob/master/docs/LEANCLOUD-COUNTER-SECURITY.md) or [Chinese](https://github.com/theme-next/hexo-theme-next/blob/master/docs/zh-CN/LEANCLOUD-COUNTER-SECURITY.md) languages.
+Documentation how to set the counter up and running safely aviable in [English](https://github.com/theme-next/hexo-theme-next/blob/master/docs/LEANCLOUD-COUNTER-SECURITY.md) or [Chinese](https://github.com/theme-next/hexo-theme-next/blob/master/docs/zh-CN/LEANCLOUD-COUNTER-SECURITY.md) languages.
 
 And you can also read full explanation of current problem [here](https://leaferx.online/2018/02/11/lc-security/).
 
