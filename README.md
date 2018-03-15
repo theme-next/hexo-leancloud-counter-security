@@ -23,9 +23,9 @@ A plugin to fix a serious security bug in leancloud visitor counter for NexT the
 
 A full document to set the counter up and running safely:
 
-[https://leaferx.online/2018/02/11/lc-security/](https://leaferx.online/2018/02/11/lc-security/) (Only Chinese for now)
+[Chinese version](https://github.com/theme-next/hexo-theme-next/blob/master/docs/zh-CN/LEANCLOUD-COUNTER-SECURITY.md)
 
-English document is still under translating.
+[English version](https://github.com/theme-next/hexo-theme-next/blob/master/docs/LEANCLOUD-COUNTER-SECURITY.md)
 
 Recommend to read the doc first.
 
@@ -39,7 +39,7 @@ npm install hexo-leancloud-counter-security --save
 ```
 
 ## Usage
-Activate this plugin in hexo's _config.yml (which locates in the root dir of your blog) by filling those options:
+Activate this plugin in hexo's `_config.yml` (which locates in the root dir of your blog) by filling those options:
 ```yml
 leancloud_counter_security:
   enable_sync: true
