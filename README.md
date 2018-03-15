@@ -1,12 +1,11 @@
-[hexo-image]: https://img.shields.io/badge/hexo-%3E%3D%203.0-blue.svg?style=flat-square
-[node-image]: https://img.shields.io/node/v/hexo-leancloud-counter-security.svg?style=flat-square
-[size-image]: https://img.shields.io/github/size/theme-next/hexo-leancloud-counter-security/index.js.svg?style=flat-square
-
-[mnt-image]: https://img.shields.io/maintenance/yes/2018.svg?style=flat-square
-[npm-image]: https://img.shields.io/npm/v/hexo-leancloud-counter-security.svg?style=flat-square
-[dm-image]: https://img.shields.io/npm/dm/hexo-leancloud-counter-security.svg?style=flat-square
-[dt-image]: https://img.shields.io/npm/dt/hexo-leancloud-counter-security.svg?style=flat-square
-[lic-image]: https://img.shields.io/npm/l/hexo-leancloud-counter-security.svg?style=flat-square
+[hexo-image]: https://img.shields.io/badge/hexo-%3E%3D%203.0-blue.svg
+[node-image]: https://img.shields.io/node/v/hexo-leancloud-counter-security.svg
+[size-image]: https://img.shields.io/github/size/theme-next/hexo-leancloud-counter-security/index.js.svg
+[mnt-image]: https://img.shields.io/maintenance/yes/2018.svg
+[npm-image]: https://img.shields.io/npm/v/hexo-leancloud-counter-security.svg
+[dm-image]: https://img.shields.io/npm/dm/hexo-leancloud-counter-security.svg
+[dt-image]: https://img.shields.io/npm/dt/hexo-leancloud-counter-security.svg
+[lic-image]: https://img.shields.io/npm/l/hexo-leancloud-counter-security.svg
 
 [hexo-url]: https://hexo.io
 [node-url]: https://nodejs.org/en/download/releases
