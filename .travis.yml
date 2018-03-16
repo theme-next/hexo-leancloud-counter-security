@@ -1,0 +1,12 @@
+language: node_js
+node_js: stable
+install: true
+script: true
+deploy:
+  provider: npm
+  email: leaferx@outlook.com
+  api_key:
+    secure: oTzk2kwiMx1xCA2o94vvwNI/STyhhwh6Fg0XcniDGMt1vztaCZ1q9FSWbtYwijA8zzmZ7wL4BhnDm1//9XI3eXEhCY3iwQdab/sLqUH0czoNu2ThtwycJslZtTqdSeCvGFDhby8f8bY7mkUZ7xwoHK716mx5+mkXwHsvorSe7HPiU5DVTm0ygHW+coZMZJVGOJsls6h7ID/T77NKWYKHL9eFlO7eZkUIYTMkCrAffcDwJhiC+U3CcFD0t+IpK4jbWAP7rOpBzEZFXYQiHBZDg/5DW9fMaFgDHBbJPKEnE4s4hvWUHQfuwTxLoHaBV0aYMq+dVjVjaoYfR08nCu911/oUI9YUX3s36wau1GpJj5FjAbiPJQSQ9S9DaRkhxM9ja6lB8zhwV52TZcZWrwhfKQ1fI8YeLDVOWYWcfxdybRIPjwQuamn5XBe0/p5uE8pF1P31P/IDsmj/ehFfyWptwC9GL7lCnHFuO52CnnuXkNXlN6D2vfAzwXGsfrjjZLdjrypNxNo1gNBsmUp1BhIPBX/5NZIAAsHn8bEbFmEJ0bINDO+fGs20fNZ8sB59YECwQOns+rf1sRB3stjEwecZyWx0KzO2b0G44r9wTgWj70vW4JclZUWETNV+lC1GbmQv5gCbL2hxsWays5HAfawGVtzL6ljcEB9THYPpN/Vfdn0=
+  on:
+    tags: true
+    repo: theme-next/hexo-leancloud-counter-security
