@@ -1,5 +1,6 @@
 [hexo-image]: https://img.shields.io/badge/hexo-%3E%3D%203.0-blue.svg
 [node-image]: https://img.shields.io/node/v/hexo-leancloud-counter-security.svg
+[travis-image]: https://travis-ci.org/theme-next/hexo-leancloud-counter-security.svg?branch=master
 [size-image]: https://img.shields.io/github/size/theme-next/hexo-leancloud-counter-security/index.js.svg
 [mnt-image]: https://img.shields.io/maintenance/yes/2018.svg
 [npm-image]: https://badge.fury.io/js/hexo-leancloud-counter-security.svg
@@ -10,9 +11,11 @@
 [hexo-url]: https://hexo.io
 [node-url]: https://nodejs.org/en/download/releases
 [npm-url]: https://www.npmjs.com/package/hexo-leancloud-counter-security
+[travis-url]: https://travis-ci.org/theme-next/hexo-leancloud-counter-security?branch=master
 
 
 # hexo-leancloud-counter-security
+[![travis-image]][travis-url]
 [![hexo-image]][hexo-url]
 [![node-image]][node-url]
 [![npm-image]][npm-url]
