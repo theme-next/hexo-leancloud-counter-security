@@ -2,7 +2,7 @@
 [node-image]: https://img.shields.io/node/v/hexo-leancloud-counter-security.svg
 [size-image]: https://img.shields.io/github/size/theme-next/hexo-leancloud-counter-security/index.js.svg
 [mnt-image]: https://img.shields.io/maintenance/yes/2018.svg
-[npm-image]: https://img.shields.io/npm/v/hexo-leancloud-counter-security.svg
+[npm-image]: https://badge.fury.io/js/hexo-leancloud-counter-security.svg
 [dm-image]: https://img.shields.io/npm/dm/hexo-leancloud-counter-security.svg
 [dt-image]: https://img.shields.io/npm/dt/hexo-leancloud-counter-security.svg
 [lic-image]: https://img.shields.io/npm/l/hexo-leancloud-counter-security.svg
@@ -21,13 +21,9 @@
 
 A plugin to fix a serious security bug in leancloud visitor counter for NexT theme site and other site that integrated this function using a similar way.
 
-A full document to set the counter up and running safely:
+Documentation how to set the counter up and running safely aviable in [English](https://github.com/theme-next/hexo-theme-next/blob/master/docs/LEANCLOUD-COUNTER-SECURITY.md) or [Chinese](https://github.com/theme-next/hexo-theme-next/blob/master/docs/zh-CN/LEANCLOUD-COUNTER-SECURITY.md) languages.
 
-[Chinese version](https://github.com/theme-next/hexo-theme-next/blob/master/docs/zh-CN/LEANCLOUD-COUNTER-SECURITY.md)
-
-[English version](https://github.com/theme-next/hexo-theme-next/blob/master/docs/LEANCLOUD-COUNTER-SECURITY.md)
-
-Recommend to read the doc first.
+And you can also read full explanation of current problem [here](https://leaferx.online/2018/02/11/lc-security/).
 
 ## Installation
 ![size-image]
