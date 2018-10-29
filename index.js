@@ -116,7 +116,10 @@ function generate_post_list(locals) {
         var urls = [].concat(locals.posts.toArray()).filter(function (x) {
             return x.published;
         }).map(function (x) {
-            return { title: x.title, url: '/' + x.path };
+            return {
+                title: x.title,
+                url: config.root + x.path
+            };
         });
         return {
             path: urlsPath,

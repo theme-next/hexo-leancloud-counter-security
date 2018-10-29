@@ -9,7 +9,12 @@ function generate_post_list(locals) {
     var config = this.config;
     if (config.leancloud_counter_security.enable_sync) {
         var urlsPath = 'leancloud_counter_security_urls.json';
-        var urls = [].concat(locals.posts.toArray()).filter((x) => { return x.published }).map((x) => { return { title: x.title, url: '/' + x.path } });
+        var urls = [].concat(locals.posts.toArray())
+                     .filter((x) => { return x.published })
+                     .map((x) => {return {
+                         title: x.title,
+                         url: config.root  + x.path
+                     }});
         return {
             path: urlsPath,
             data: JSON.stringify(urls)
