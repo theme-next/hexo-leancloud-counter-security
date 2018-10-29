@@ -118,7 +118,7 @@ function generate_post_list(locals) {
         }).map(function (x) {
             return {
                 title: x.title,
-                url: config.root ? config.root : '/' + x.path
+                url: config.root + x.path
             };
         });
         return {

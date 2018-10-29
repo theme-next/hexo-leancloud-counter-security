@@ -13,7 +13,7 @@ function generate_post_list(locals) {
                      .filter((x) => { return x.published })
                      .map((x) => {return {
                          title: x.title,
-                         url: config.root ? config.root : '/' + x.path
+                         url: config.root  + x.path
                      }});
         return {
             path: urlsPath,
