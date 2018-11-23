@@ -1,6 +1,6 @@
 {
   "name": "hexo-leancloud-counter-security",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "engines": {
     "node": ">= 6.9.0"
   },
