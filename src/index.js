@@ -58,7 +58,6 @@ async function sync() {
 
         log.info('Now syncing your posts list to leancloud counter...');
         var Counter = AV.Object.extend('Counter');
-        //----add----
         urls.sort(cmp);
         var memoFile = pathFn.join(publicDir, "leancloud.memo");
         if(!fs.existsSync(memoFile)){
@@ -70,9 +69,7 @@ async function sync() {
         var cnt = 0;
         var limit = 0;
         var env = this;
-        //----end----
         _.forEach(urls, (x) => {
-            //----add----
             var y = {};
             y.title = "";
             y.url = "";
@@ -90,7 +87,6 @@ async function sync() {
             if(!flag) {
                 log.info("Dealing with record of " + x.title);
                 limit++;
-                //----end----
                 var query = new AV.Query('Counter');
                 query.equalTo('url', x.url);
                 query.count().then(
@@ -103,40 +99,30 @@ async function sync() {
                             counter.save().then(
                                 (obj) => { 
                                     log.info(x.title + ' is saved as: ' + obj.id); 
-                                    //----add----
                                     newData.push(x);
                                     cnt++;
                                     postOperation(env, cnt, limit, newData, memoData);
-                                    //----end----
                                 },
                                 (error) => { 
                                     log.error(error); 
-                                    //----add----
                                     cnt++;
                                     postOperation(env, cnt, limit, newData, memoData);
-                                    //----end----
                                 }
                             );
                         }
-                        //----add----
                         else{
                             newData.push(x);
                             cnt++;
                             postOperation(env, cnt, limit, newData, memoData);
                         }
-                        //----end----
                     },
                     (error) => { 
                         log.error(error); 
-                        //----add----
                         cnt++;
                         postOperation(env, cnt, limit, newData, memoData);
-                        //----end----
                     }
                 );
-            //----add----
             }
-            //----end----
         });
     }
 }
@@ -183,7 +169,6 @@ function commandFunc(args) {
 
 hexo.extend.console.register('lc-counter', 'hexo-leancloud-counter-security', commandOptions, commandFunc);
 
-//----add----
 function cmp(x, y){
     if(x.url < y.url)
         return -1;
