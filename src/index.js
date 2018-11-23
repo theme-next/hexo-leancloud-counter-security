@@ -58,24 +58,85 @@ async function sync() {
 
         log.info('Now syncing your posts list to leancloud counter...');
         var Counter = AV.Object.extend('Counter');
+        //----add----
+        urls.sort(cmp);
+        var memoFile = pathFn.join(publicDir, "leancloud.memo");
+        if(!fs.existsSync(memoFile)){
+            fs.writeFileSync(memoFile, "[\n]");
+        }
+        var memoData = fs.readFileSync(memoFile, "utf-8").split("\n");
+        var memoIdx = 1;
+        var newData = [];
+        var cnt = 0;
+        var limit = 0;
+        var env = this;
+        //----end----
         _.forEach(urls, (x) => {
-            var query = new AV.Query('Counter');
-            query.equalTo('url', x.url);
-            query.count().then(
-                (count) => {
-                    if (count === 0) {
-                        var counter = new Counter();
-                        counter.set('url', x.url);
-                        counter.set('title', x.title);
-                        counter.set('time', 0);
-                        counter.save().then(
-                            (obj) => { log.info(x.title + ' is saved as: ' + obj.id); },
-                            (error) => { log.error(error); }
-                        );
+            //----add----
+            var y = {};
+            y.title = "";
+            y.url = "";
+            var flag = false;
+            while(true){
+                if(memoData[memoIdx] == ']') break;
+                y = JSON.parse(memoData[memoIdx].substring(0, memoData[memoIdx].length-1));
+                if(y.url > x.url) break;
+                if(y.url == x.url && y.title == x.title){
+                    flag = true;
+                    break;
+                }
+                memoIdx++;
+            }
+            if(!flag) {
+                log.info("Dealing with record of " + x.title);
+                limit++;
+                //----end----
+                var query = new AV.Query('Counter');
+                query.equalTo('url', x.url);
+                query.count().then(
+                    (count) => {
+                        if (count === 0) {
+                            var counter = new Counter();
+                            counter.set('url', x.url);
+                            counter.set('title', x.title);
+                            counter.set('time', 0);
+                            counter.save().then(
+                                (obj) => { 
+                                    log.info(x.title + ' is saved as: ' + obj.id); 
+                                    //----add----
+                                    newData.push(x);
+                                    cnt++;
+                                    postOperation(env, cnt, limit, newData, memoData);
+                                    //----end----
+                                },
+                                (error) => { 
+                                    log.error(error); 
+                                    //----add----
+                                    cnt++;
+                                    postOperation(env, cnt, limit, newData, memoData);
+                                    //----end----
+                                }
+                            );
+                        }
+                        //----add----
+                        else{
+                            newData.push(x);
+                            cnt++;
+                            postOperation(env, cnt, limit, newData, memoData);
+                        }
+                        //----end----
+                    },
+                    (error) => { 
+                        log.error(error); 
+                        //----add----
+                        cnt++;
+                        postOperation(env, cnt, limit, newData, memoData);
+                        //----end----
                     }
-                },
-                (error) => { log.error(error); }
-            );
+                );
+            //----add----
+            }
+            //----end----
         });
     }
 }
@@ -121,3 +182,48 @@ function commandFunc(args) {
 }
 
 hexo.extend.console.register('lc-counter', 'hexo-leancloud-counter-security', commandOptions, commandFunc);
+
+//----add----
+function cmp(x, y){
+    if(x.url < y.url)
+        return -1;
+    else if(x.url == y.url)
+        return 0;
+    else return 1;
+}
+
+var postOperation = function (env, cnt, limit, newData, memoData){
+    if(cnt == limit){
+        var log = env.log;
+        newData.sort(cmp);
+        var sourceDir = env.source_dir;
+        var publicDir = env.public_dir;
+        var memoFile = pathFn.join(sourceDir, "leancloud.memo");
+        fs.writeFileSync(memoFile, "[\n");
+        
+        var memoIdx = 1;
+        for(var i = 0; newData[i]; i++){
+            while(true){
+                if(memoData[memoIdx] == ']') break;
+                var y = JSON.parse(memoData[memoIdx].substring(0, memoData[memoIdx].length-1));
+                if(y.url > newData[i].url) break;
+                
+                fs.writeFileSync(memoFile, memoData[memoIdx] + "\n", {'flag':'a'});
+                memoIdx++;
+            }
+            fs.writeFileSync(memoFile, "{\"title\":\"" + newData[i].title + "\",\"url\":\"" + newData[i].url + "\"},\n", {'flag':'a'});
+        }
+        while(memoData[memoIdx] != ']'){
+            fs.writeFileSync(memoFile, memoData[memoIdx] + "\n", {'flag':'a'});
+            memoIdx++;
+        }
+        fs.writeFileSync(memoFile, memoData[memoIdx], {'flag':'a'});
+        
+        var srcFile = pathFn.join(sourceDir, "leancloud.memo");
+        var destFile = pathFn.join(publicDir, "leancloud.memo");
+        var readStream = fs.createReadStream(srcFile);
+        var writeStream = fs.createWriteStream(destFile);
+        readStream.pipe(writeStream);
+        console.log("leancloud.memo successfully updated.");
+    }
+}
