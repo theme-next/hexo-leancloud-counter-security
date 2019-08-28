@@ -1,6 +1,6 @@
 {
   "name": "hexo-leancloud-counter-security",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "engines": {
     "node": ">= 6.9.0"
   },
@@ -25,12 +25,12 @@
   },
   "homepage": "https://github.com/theme-next/hexo-leancloud-counter-security#readme",
   "dependencies": {
-    "leancloud-storage": "^3.5.0",
-    "readline-sync": "^1.4.7"
+    "leancloud-storage": "^3.15.0",
+    "readline-sync": "^1.4.10"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.1"
+    "babel-preset-env": "^1.7.0"
   }
 }
