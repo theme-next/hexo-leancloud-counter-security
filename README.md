@@ -1,25 +1,9 @@
-[hexo-image]: https://img.shields.io/badge/hexo-%3E%3D%203.0-blue.svg
-[node-image]: https://img.shields.io/node/v/hexo-leancloud-counter-security.svg
-[travis-image]: https://travis-ci.org/theme-next/hexo-leancloud-counter-security.svg?branch=master
-[size-image]: https://img.shields.io/github/size/theme-next/hexo-leancloud-counter-security/index.js.svg
-[mnt-image]: https://img.shields.io/maintenance/yes/2018.svg
-[npm-image]: https://badge.fury.io/js/hexo-leancloud-counter-security.svg
-[dm-image]: https://img.shields.io/npm/dm/hexo-leancloud-counter-security.svg
-[dt-image]: https://img.shields.io/npm/dt/hexo-leancloud-counter-security.svg
-[lic-image]: https://img.shields.io/npm/l/hexo-leancloud-counter-security.svg
-
-[hexo-url]: https://hexo.io
-[node-url]: https://nodejs.org/en/download/releases
-[npm-url]: https://www.npmjs.com/package/hexo-leancloud-counter-security
-[travis-url]: https://travis-ci.org/theme-next/hexo-leancloud-counter-security?branch=master
-
-
 # hexo-leancloud-counter-security
+
 [![travis-image]][travis-url]
 [![hexo-image]][hexo-url]
 [![node-image]][node-url]
 [![npm-image]][npm-url]
-[![mnt-image]](../../commits/master)
 [![lic-image]](LICENSE)
 
 A plugin to fix a serious security bug in leancloud visitor counter for NexT theme site and other site that integrated this function using a similar way.
@@ -29,6 +13,7 @@ Documentation how to set the counter up and running safely aviable in [English](
 And you can also read full explanation of current problem [here](https://leaferx.online/2018/02/11/lc-security/).
 
 ## Installation
+
 ![size-image]
 [![dm-image]][npm-url]
 [![dt-image]][npm-url]
@@ -38,6 +23,7 @@ npm install hexo-leancloud-counter-security --save
 ```
 
 ## Usage
+
 Activate this plugin in hexo's `_config.yml` (which locates in the root dir of your blog) by filling those options:
 ```yml
 leancloud_counter_security:
@@ -50,6 +36,7 @@ leancloud_counter_security:
 If `leancloud_counter_security` not specified (or commented), plugin will totally disabled.
 
 ### NexT theme
+
 This plugin integrated in «NexT» and after plugin enabled in main Hexo config, need to enable options in NexT config:
 ```yml
 leancloud_visitors:
@@ -69,6 +56,7 @@ You should build the Leancloud background first to make the counter active.
 After that, install this plugin and config it to make the counter safe.
 
 ### Console Command
+
 ```
 hexo lc-counter register <<username>> <<password>>
 ```
@@ -79,7 +67,9 @@ hexo lc-counter r <<username>> <<password>>
 Register a user in your Leancloud database for authority control.
 
 ## TroubleShooting
+
 ### fail to sync records to the leancloud database
+
 For purpose of avoiding the 429 error code(Too Many Request) from leancloud, this plugin use a local database to store the records which have been successfully synchronized to the leancloud. Only the records that are not in the local database will be synchronized. This feature reduces the request quantity to avoid 429 error. The local databases is a json file named `leancloud.memo` in `<<blog directory>>/source`. Delete the `leancloud.memo` will not cause other flaws.  
   
 If you failed to sync records to the leancloud and you are sure about the plugin causes the fault. You can delete the `leancloud.memo` and deploy again. The command is following.  
@@ -88,3 +78,18 @@ If you failed to sync records to the leancloud and you are sure about the plugin
 rm <<blog directory>>/source/leancloud.memo
 hexo d
 ```
+
+[travis-image]: https://img.shields.io/travis/theme-next/hexo-leancloud-counter-security/master?style=flat-square
+[hexo-image]: https://img.shields.io/badge/hexo-%3E%3D%203.0-blue?style=flat-square
+[node-image]: https://img.shields.io/node/v/hexo-leancloud-counter-security?style=flat-square
+[npm-image]: https://img.shields.io/npm/v/hexo-leancloud-counter-security?style=flat-square
+[lic-image]: https://img.shields.io/npm/l/hexo-leancloud-counter-security?style=flat-square
+
+[size-image]: https://img.shields.io/github/languages/code-size/theme-next/hexo-leancloud-counter-security?style=flat-square
+[dm-image]: https://img.shields.io/npm/dm/hexo-leancloud-counter-security?style=flat-square
+[dt-image]: https://img.shields.io/npm/dt/hexo-leancloud-counter-security?style=flat-square
+
+[travis-url]: https://travis-ci.org/theme-next/hexo-leancloud-counter-security?branch=master
+[hexo-url]: https://hexo.io
+[node-url]: https://nodejs.org/en/download/releases
+[npm-url]: https://www.npmjs.com/package/hexo-leancloud-counter-security
