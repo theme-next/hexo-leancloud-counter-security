@@ -1,9 +1,9 @@
 # hexo-leancloud-counter-security
 
-[![travis-image]][travis-url]
-[![hexo-image]][hexo-url]
-[![node-image]][node-url]
 [![npm-image]][npm-url]
+[![node-image]][node-url]
+[![hexo-image]][hexo-url]
+[![travis-image]][travis-url]
 [![lic-image]](LICENSE)
 
 A plugin to fix a serious security bug in leancloud visitor counter for NexT theme site and other site that integrated this function using a similar way.
@@ -79,17 +79,17 @@ rm <<blog directory>>/source/leancloud.memo
 hexo d
 ```
 
-[travis-image]: https://img.shields.io/travis/theme-next/hexo-leancloud-counter-security/master?style=flat-square
-[hexo-image]: https://img.shields.io/badge/hexo-%3E%3D%203.0-blue?style=flat-square
-[node-image]: https://img.shields.io/node/v/hexo-leancloud-counter-security?style=flat-square
 [npm-image]: https://img.shields.io/npm/v/hexo-leancloud-counter-security?style=flat-square
+[node-image]: https://img.shields.io/node/v/hexo-leancloud-counter-security?style=flat-square
+[hexo-image]: https://img.shields.io/badge/hexo-%3E%3D%203.0-blue?style=flat-square
+[travis-image]: https://img.shields.io/travis/theme-next/hexo-leancloud-counter-security/master?style=flat-square
 [lic-image]: https://img.shields.io/npm/l/hexo-leancloud-counter-security?style=flat-square
 
 [size-image]: https://img.shields.io/github/languages/code-size/theme-next/hexo-leancloud-counter-security?style=flat-square
 [dm-image]: https://img.shields.io/npm/dm/hexo-leancloud-counter-security?style=flat-square
 [dt-image]: https://img.shields.io/npm/dt/hexo-leancloud-counter-security?style=flat-square
 
-[travis-url]: https://travis-ci.org/theme-next/hexo-leancloud-counter-security?branch=master
-[hexo-url]: https://hexo.io
-[node-url]: https://nodejs.org/en/download/releases
 [npm-url]: https://www.npmjs.com/package/hexo-leancloud-counter-security
+[node-url]: https://nodejs.org/en/download/releases
+[hexo-url]: https://hexo.io
+[travis-url]: https://travis-ci.org/theme-next/hexo-leancloud-counter-security?branch=master
