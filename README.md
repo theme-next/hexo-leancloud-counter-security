@@ -19,7 +19,7 @@ And you can also read full explanation of current problem [here](https://leaferx
 [![dt-image]][npm-url]
 
 ```bash
-npm install hexo-leancloud-counter-security --save
+npm install hexo-leancloud-counter-security
 ```
 
 ## Usage
