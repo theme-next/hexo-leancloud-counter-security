@@ -2,7 +2,7 @@
   "name": "hexo-leancloud-counter-security",
   "version": "1.4.1",
   "engines": {
-    "node": ">=8.6.0"
+    "node": ">=10.9.0"
   },
   "description": "A plugin to fix a serious security bug in leancloud visitor counter for NexT.",
   "main": "index.js",
