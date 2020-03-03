@@ -1,3 +1,7 @@
+/* global hexo */
+
+'use strict';
+
 var AV = require('leancloud-storage');
 var readlineSync = require('readline-sync');
 var packageInfo = require('./package.json');
@@ -15,8 +19,8 @@ function generate_post_list(locals) {
         .map(x => {
             return {
                 title: x.title,
-                url: config.root + x.path
-            }
+                url  : config.root + x.path
+            };
         });
     return {
         path: urlsPath,
@@ -25,6 +29,49 @@ function generate_post_list(locals) {
 }
 
 hexo.extend.generator.register('leancloud_counter_security_generator', generate_post_list);
+
+function cmp(x, y) {
+    if (x.url < y.url) {
+        return -1;
+    } else if (x.url === y.url) {
+        return 0;
+    }
+    return 1;
+}
+
+function postOperation(env, cnt, limit, newData, memoData) {
+    if (cnt !== limit) return;
+
+    newData.sort(cmp);
+    var sourceDir = env.source_dir;
+    var publicDir = env.public_dir;
+    var memoFile = pathFn.join(sourceDir, 'leancloud.memo');
+    fs.writeFileSync(memoFile, '[\n');
+
+    var memoIdx = 1;
+    for (var i = 0; newData[i]; i++) {
+        while (memoData[memoIdx] !== ']') {
+            var y = JSON.parse(memoData[memoIdx].substring(0, memoData[memoIdx].length - 1));
+            if (y.url > newData[i].url) break;
+
+            fs.writeFileSync(memoFile, memoData[memoIdx] + '\n', { flag: 'a' });
+            memoIdx++;
+        }
+        fs.writeFileSync(memoFile, '{"title":"' + newData[i].title + '","url":"' + newData[i].url + '"},\n', { flag: 'a' });
+    }
+    while (memoData[memoIdx] !== ']') {
+        fs.writeFileSync(memoFile, memoData[memoIdx] + '\n', { flag: 'a' });
+        memoIdx++;
+    }
+    fs.writeFileSync(memoFile, memoData[memoIdx], { flag: 'a' });
+
+    var srcFile = pathFn.join(sourceDir, 'leancloud.memo');
+    var destFile = pathFn.join(publicDir, 'leancloud.memo');
+    var readStream = fs.createReadStream(srcFile);
+    var writeStream = fs.createWriteStream(destFile);
+    readStream.pipe(writeStream);
+    this.log.info('leancloud.memo successfully updated.');
+}
 
 async function sync() {
     var log = this.log;
@@ -39,7 +86,7 @@ async function sync() {
     var urls = JSON.parse(fs.readFileSync(UrlsFile, 'utf8'));
 
     AV.init({
-        appId: APP_ID,
+        appId : APP_ID,
         appKey: APP_KEY
     });
 
@@ -53,11 +100,11 @@ async function sync() {
         } else if (!passWord) {
             passWord = readlineSync.question('Enter your password: ', { hideEchoBack: true });
         }
-        await (AV.User.logIn(userName, passWord).then(loginedUser => {
+        await AV.User.logIn(userName, passWord).then(loginedUser => {
             log.info('Logined as: ' + loginedUser.getUsername());
         }, error => {
             log.error(error);
-        }));
+        });
     }
 
     log.info('Now syncing your posts list to leancloud counter...');
@@ -77,11 +124,10 @@ async function sync() {
         y.title = '';
         y.url = '';
         var flag = false;
-        while (true) {
-            if (memoData[memoIdx] == ']') break;
+        while (memoData[memoIdx] !== ']') {
             y = JSON.parse(memoData[memoIdx].substring(0, memoData[memoIdx].length - 1));
             if (y.url > x.url) break;
-            if (y.url == x.url && y.title == x.title) {
+            if (y.url === x.url && y.title === x.title) {
                 flag = true;
                 break;
             }
@@ -125,8 +171,8 @@ async function sync() {
 hexo.extend.deployer.register('leancloud_counter_security_sync', sync);
 
 var commandOptions = {
-    desc: packageInfo.description,
-    usage: ' <argument>',
+    desc       : packageInfo.description,
+    usage      : ' <argument>',
     'arguments': [
         {
             'name': 'register | r <username> <password>',
@@ -145,7 +191,7 @@ function commandFunc(args) {
         var APP_ID = config.leancloud_counter_security.app_id;
         var APP_KEY = config.leancloud_counter_security.app_key;
         AV.init({
-            appId: APP_ID,
+            appId : APP_ID,
             appKey: APP_KEY
         });
 
@@ -163,46 +209,3 @@ function commandFunc(args) {
 }
 
 hexo.extend.console.register('lc-counter', 'hexo-leancloud-counter-security', commandOptions, commandFunc);
-
-function cmp(x, y) {
-    if (x.url < y.url)
-        return -1;
-    else if (x.url == y.url)
-        return 0;
-    else return 1;
-}
-
-var postOperation = function(env, cnt, limit, newData, memoData) {
-    if (cnt !== limit) return;
-
-    newData.sort(cmp);
-    var sourceDir = env.source_dir;
-    var publicDir = env.public_dir;
-    var memoFile = pathFn.join(sourceDir, 'leancloud.memo');
-    fs.writeFileSync(memoFile, '[\n');
-
-    var memoIdx = 1;
-    for (var i = 0; newData[i]; i++) {
-        while (true) {
-            if (memoData[memoIdx] == ']') break;
-            var y = JSON.parse(memoData[memoIdx].substring(0, memoData[memoIdx].length - 1));
-            if (y.url > newData[i].url) break;
-
-            fs.writeFileSync(memoFile, memoData[memoIdx] + '\n', { flag: 'a' });
-            memoIdx++;
-        }
-        fs.writeFileSync(memoFile, '{"title":"' + newData[i].title + '","url":"' + newData[i].url + '"},\n', { flag: 'a' });
-    }
-    while (memoData[memoIdx] != ']') {
-        fs.writeFileSync(memoFile, memoData[memoIdx] + '\n', { flag: 'a' });
-        memoIdx++;
-    }
-    fs.writeFileSync(memoFile, memoData[memoIdx], { flag: 'a' });
-
-    var srcFile = pathFn.join(sourceDir, 'leancloud.memo');
-    var destFile = pathFn.join(publicDir, 'leancloud.memo');
-    var readStream = fs.createReadStream(srcFile);
-    var writeStream = fs.createWriteStream(destFile);
-    readStream.pipe(writeStream);
-    console.log('leancloud.memo successfully updated.');
-}
