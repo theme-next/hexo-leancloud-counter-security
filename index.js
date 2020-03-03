@@ -1,5 +1,4 @@
 var AV = require('leancloud-storage');
-var _ = require('lodash');
 var readlineSync = require('readline-sync');
 var packageInfo = require('./package.json');
 var pathFn = require('path');
@@ -62,7 +61,6 @@ async function sync() {
 
         log.info('Now syncing your posts list to leancloud counter...');
         var Counter = AV.Object.extend('Counter');
-        urls.sort(cmp);
         var memoFile = pathFn.join(publicDir, "leancloud.memo");
         if (!fs.existsSync(memoFile)) {
             fs.writeFileSync(memoFile, "[\n]");
@@ -73,7 +71,7 @@ async function sync() {
         var cnt = 0;
         var limit = 0;
         var env = this;
-        _.forEach(urls, (x) => {
+        urls.sort(cmp).forEach(x => {
             var y = {};
             y.title = "";
             y.url = "";
@@ -176,7 +174,6 @@ function cmp(x, y) {
 
 var postOperation = function(env, cnt, limit, newData, memoData) {
     if (cnt == limit) {
-        var log = env.log;
         newData.sort(cmp);
         var sourceDir = env.source_dir;
         var publicDir = env.public_dir;
