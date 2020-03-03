@@ -171,12 +171,12 @@ async function sync() {
 hexo.extend.deployer.register('leancloud_counter_security_sync', sync);
 
 var commandOptions = {
-    desc       : packageInfo.description,
-    usage      : ' <argument>',
-    'arguments': [
+    desc     : packageInfo.description,
+    usage    : ' <argument>',
+    arguments: [
         {
-            'name': 'register | r <username> <password>',
-            'desc': 'Register a new user.'
+            name: 'register | r <username> <password>',
+            desc: 'Register a new user.'
         }
     ]
 };
