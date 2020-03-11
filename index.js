@@ -2,14 +2,14 @@
 
 'use strict';
 
-var AV = require('leancloud-storage');
-var readlineSync = require('readline-sync');
-var packageInfo = require('./package.json');
-var pathFn = require('path');
-var fs = require('fs');
+const AV = require('leancloud-storage');
+const readlineSync = require('readline-sync');
+const packageInfo = require('./package.json');
+const pathFn = require('path');
+const fs = require('fs');
 
 function generate_post_list(locals) {
-    var config = this.config;
+    let { config } = this;
 
     if (!config.leancloud_counter_security.enable_sync) return;
 
@@ -74,8 +74,7 @@ function postOperation(env, cnt, limit, newData, memoData) {
 }
 
 async function sync() {
-    var log = this.log;
-    var config = this.config;
+    let { log, config } = this;
 
     if (!config.leancloud_counter_security.enable_sync) return;
 
@@ -182,8 +181,7 @@ var commandOptions = {
 };
 
 function commandFunc(args) {
-    var log = this.log;
-    var config = this.config;
+    let { log, config } = this;
 
     if (args._.length !== 3) {
         log.error('Too Few or Many Arguments.');
