@@ -14,7 +14,7 @@ function generate_post_list(locals) {
     if (!config.leancloud_counter_security.enable_sync) return;
 
     var urlsPath = 'leancloud_counter_security_urls.json';
-    var urls = [...locals.posts]
+    var urls = [...locals.posts.toArray()]
         .filter(x => x.published)
         .map(x => {
             return {

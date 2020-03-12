@@ -1,6 +1,6 @@
 {
   "name": "hexo-leancloud-counter-security",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "engines": {
     "node": ">=10.9.0"
   },
@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/theme-next/hexo-leancloud-counter-security#readme",
   "dependencies": {
-    "leancloud-storage": "^4.2.0",
+    "leancloud-storage": "^4.3.0",
     "readline-sync": "^1.4.10"
   }
 }
