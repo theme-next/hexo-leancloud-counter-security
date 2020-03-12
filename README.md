@@ -30,6 +30,7 @@ leancloud_counter_security:
   enable_sync: true
   app_id: <<your app id>>
   app_key: <<your app key>>
+  server_url: <<your server url>> # For CN region, optional
   username: <<your username>> # Will be asked while deploying if is left blank
   password: <<your password>> # Recommmended to be left blank. Will be asked while deploying if is left blank
 ```

@@ -78,15 +78,15 @@ async function sync() {
 
     if (!config.leancloud_counter_security.enable_sync) return;
 
-    var APP_ID = config.leancloud_counter_security.app_id;
-    var APP_KEY = config.leancloud_counter_security.app_key;
+    let { app_id, app_key, server_url } = config.leancloud_counter_security;
     var publicDir = this.public_dir;
     var UrlsFile = pathFn.join(publicDir, 'leancloud_counter_security_urls.json');
     var urls = JSON.parse(fs.readFileSync(UrlsFile, 'utf8'));
 
     AV.init({
-        appId : APP_ID,
-        appKey: APP_KEY
+        appId    : app_id,
+        appKey   : app_key,
+        serverURL: server_url
     });
 
     var currentUser = AV.User.current();
@@ -186,11 +186,11 @@ function commandFunc(args) {
     if (args._.length !== 3) {
         log.error('Too Few or Many Arguments.');
     } else if (args._[0] === 'register' || args._[0] === 'r') {
-        var APP_ID = config.leancloud_counter_security.app_id;
-        var APP_KEY = config.leancloud_counter_security.app_key;
+        let { app_id, app_key, server_url } = config.leancloud_counter_security;
         AV.init({
-            appId : APP_ID,
-            appKey: APP_KEY
+            appId    : app_id,
+            appKey   : app_key,
+            serverURL: server_url
         });
 
         var user = new AV.User();
