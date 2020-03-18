@@ -29,11 +29,11 @@ Activate this plugin in hexo's `_config.yml` (which locates in the root dir of y
 ```yml
 leancloud_counter_security:
   enable_sync: true
-  app_id: <<your app id>>
-  app_key: <<your app key>>
-  server_url: <<your server url>> # Required for apps from CN region, eg: https://leancloud.cn
-  username: <<your username>> # Will be asked while deploying if is left blank
-  password: <<your password>> # Recommmended to be left blank. Will be asked while deploying if is left blank
+  app_id: <your app id>
+  app_key: <your app key>
+  server_url: <your server url> # Required for apps from CN region, e.g. https://leancloud.cn
+  username: <your username> # Will be asked while deploying if is left blank
+  password: <your password> # Recommmended to be left blank. Will be asked while deploying if is left blank
 ```
 
 If `leancloud_counter_security` not specified (or commented), plugin will totally disabled.
@@ -45,8 +45,8 @@ This plugin integrated in «NexT» and after plugin enabled in main Hexo config,
 ```yml
 leancloud_visitors:
   enable: true
-  app_id: <<your app id>>
-  app_key: <<your app key>>
+  app_id: <your app id>
+  app_key: <your app key>
   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
   security: true
 ```
@@ -58,13 +58,13 @@ After that, install this plugin and config it to make the counter safe.
 ### Console Command
 
 ```bash
-hexo lc-counter register <<username>> <<password>>
+hexo lc-counter register <username> <password>
 ```
 
 or
 
 ```bash
-hexo lc-counter r <<username>> <<password>>
+hexo lc-counter r <username> <password>
 ```
 
 Register a user in your Leancloud database for authority control.
@@ -73,12 +73,12 @@ Register a user in your Leancloud database for authority control.
 
 ### fail to sync records to the leancloud database
 
-For purpose of avoiding the 429 error code (Too Many Request) from leancloud, this plugin use a local database to store the records which have been successfully synchronized to the leancloud. Only the records that are not in the local database will be synchronized. This feature reduces the request quantity to avoid 429 error. The local databases is a json file named `leancloud.memo` in `<<blog directory>>/source`. Delete the `leancloud.memo` will not cause other flaws.
+For purpose of avoiding the 429 error code (Too Many Request) from leancloud, this plugin use a local database to store the records which have been successfully synchronized to the leancloud. Only the records that are not in the local database will be synchronized. This feature reduces the request quantity to avoid 429 error. The local databases is a json file named `leancloud.memo` in `<blog directory>/source`. Delete the `leancloud.memo` will not cause other flaws.
 
 If you failed to sync records to the leancloud and you are sure about the plugin causes the fault. You can delete the `leancloud.memo` and deploy again. The command is following.
 
 ```bash
-rm <<blog directory>>/source/leancloud.memo
+rm <blog directory>/source/leancloud.memo
 hexo d
 ```
 
