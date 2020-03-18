@@ -30,7 +30,7 @@ leancloud_counter_security:
   enable_sync: true
   app_id: <<your app id>>
   app_key: <<your app key>>
-  server_url: <<your server url>> # For CN region, optional
+  server_url: <<your server url>> # Required for apps from CN region
   username: <<your username>> # Will be asked while deploying if is left blank
   password: <<your password>> # Recommmended to be left blank. Will be asked while deploying if is left blank
 ```
@@ -46,11 +46,7 @@ leancloud_visitors:
   app_key: <<your app key>>
   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
   security: true
-  betterPerformance: false
 ```
-
-**Explaination for `betterPerformance`:**
-Because the Leancloud developer's plan has limits in requst thread amount and running time, counter number may be very slow to load in some times. If set `betterPerformance` to true, counter number will be displayed quickly by assuming the request is accepted normally.
 
 You should build the Leancloud background first to make the counter active.
 
