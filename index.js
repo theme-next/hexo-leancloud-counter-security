@@ -17,9 +17,10 @@ function generate_post_list(locals) {
     var urls = [...locals.posts.toArray()]
         .filter(x => x.published)
         .map(x => {
+            const url = config.root + x.path
             return {
                 title: x.title,
-                url  : config.root + x.path
+                url  : url.startsWith('//') ? url.substr(1) : url
             };
         });
     return {
