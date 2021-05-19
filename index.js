@@ -40,6 +40,7 @@ function cmp(x, y) {
 }
 
 function postOperation(env, cnt, limit, newData, memoData) {
+    let { log } = this;
     if (cnt !== limit) return;
 
     newData.sort(cmp);
@@ -70,7 +71,7 @@ function postOperation(env, cnt, limit, newData, memoData) {
     var readStream = fs.createReadStream(srcFile);
     var writeStream = fs.createWriteStream(destFile);
     readStream.pipe(writeStream);
-    this.log.info('leancloud.memo successfully updated.');
+    log.info('leancloud.memo successfully updated.');
 }
 
 async function sync() {
