@@ -39,7 +39,7 @@ function cmp(x, y) {
     return 1;
 }
 
-function postOperation(env, cnt, limit, newData, memoData) {
+function postOperation(env, cnt, limit, newData, memoData, log) {
     if (cnt !== limit) return;
 
     newData.sort(cmp);
@@ -70,7 +70,7 @@ function postOperation(env, cnt, limit, newData, memoData) {
     var readStream = fs.createReadStream(srcFile);
     var writeStream = fs.createWriteStream(destFile);
     readStream.pipe(writeStream);
-    this.log.info('leancloud.memo successfully updated.');
+    log.info('leancloud.memo successfully updated.');
 }
 
 async function sync() {
@@ -148,21 +148,21 @@ async function sync() {
                     log.info(x.title + ' is saved as: ' + obj.id);
                     newData.push(x);
                     cnt++;
-                    postOperation(env, cnt, limit, newData, memoData);
+                    postOperation(env, cnt, limit, newData, memoData, log);
                 }, error => {
                     log.error(error);
                     cnt++;
-                    postOperation(env, cnt, limit, newData, memoData);
+                    postOperation(env, cnt, limit, newData, memoData, log);
                 });
             } else {
                 newData.push(x);
                 cnt++;
-                postOperation(env, cnt, limit, newData, memoData);
+                postOperation(env, cnt, limit, newData, memoData, log);
             }
         }, error => {
             log.error(error);
             cnt++;
-            postOperation(env, cnt, limit, newData, memoData);
+            postOperation(env, cnt, limit, newData, memoData, log);
         });
     });
 }
